@@ -22,3 +22,33 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.spec {
+}
+
+.spec, .result {
+  padding:0;
+  margin: 0;
+  width: 49%;
+  height: 100vh;
+  white-space: normal;
+  font-size: 18px;
+}
+
+.result {
+  color : transparent;
+  text-shadow : 0 0 0 #000;
+  white-space: nowrap;
+}
+
+.copy {
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  top: 25px;
+  right: 25px;
+  border-width: 5px;
+  border-color: cornflowerblue;
+}
+
