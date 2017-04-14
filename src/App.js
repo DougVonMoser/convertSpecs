@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-const thing = require('./thing');
+const thing = require('./rankLogic');
 
 
 class Tinkle extends Component {
@@ -16,14 +16,12 @@ class Tinkle extends Component {
     }
 
     handleKeyDown(event){
-        let newValue;
         if(event.keyCode === 9){
-            console.log(event.target.selectionStart, event.target.selectionEnd)
             var cursor = event.target.selectionStart;
-            newValue = event.target.value.slice(0,cursor) + '    ' + event.target.value.slice(cursor);
+            let newValue = event.target.value.slice(0,cursor) + '    ' + event.target.value.slice(cursor);
             event.preventDefault();
+            this.setState({value: newValue});
         }
-        this.setState({value: newValue})
     }
 
     render() {

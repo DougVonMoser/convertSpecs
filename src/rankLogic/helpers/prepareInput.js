@@ -10,50 +10,13 @@ function findSpaces(str){
 }
 
 module.exports = function(text){
-    let lineArray = text.split("\n");
-    let raw = lineArray.slice();
-    lineArray = lineArray
-        .map((text, ind) => {
-            let numSpaces = findSpaces(text);
-            return {
-                level: numSpaces / 4,
-                text: text.slice(numSpaces),
-                lineNumber: ind + 1
-            }
-        })
-        .filter(elem => elem.text.length > 2);
-
-    // find where /* build starts and ends and return the inbetween
-    let startBuildNum = lineArray.reduce((prev, line, ind) =>{
-        if(prev !== null) {
-            return prev;
-        }
-        if(line.text === '/*bS') {
-            return ind;
-        }
-        return null;
-    }, null);
-
-    let endBuildNum = lineArray.reduce((prev, line, ind) =>{
-        if(prev) {
-            return prev;
-        }
-        if(line.text === 'bS*/') {
-            return ind;
-        }
-        return null;
-    }, null);
-
-    if(startBuildNum === null){
+    return text.split("\n")
+        .filter(line => line.replace(/ /g, '').length > 0)
+        .map(text => {
+        let numSpaces = findSpaces(text);
         return {
-            response: null,
+            level: numSpaces / 4,
+            text: text.slice(numSpaces)
         }
-    } else {//
-        return {
-            nodes: lineArray.slice(startBuildNum + 1, endBuildNum),
-            startBuildNum,
-            endBuildNum,
-            raw,
-        };
-    }
+    });
 };
