@@ -1,7 +1,7 @@
 
-const buildTestString = require('./helpers/buildTestString');
-const rankInput = require('./helpers/rankInput');
 const prepareInput = require('./helpers/prepareInput');
+const rankInput = require('./helpers/rankInput');
+const buildTestString = require('./helpers/buildTestString');
 
 
 module.exports = function(txtFileStr){

@@ -15,7 +15,7 @@ class Tinkle extends Component {
 
 
     handleChange(event){
-        this.setState({value: event.target.value})
+        this.setState({value: event.target.value});
     }
 
     handleKeyDown(event){
@@ -32,11 +32,12 @@ class Tinkle extends Component {
     }
 
     render() {
+        let specs = thing(this.state.value);
         return (
             <div className="container">
                 <textarea onKeyDown={this.handleKeyDown} onChange={this.handleChange} value={this.state.value} onBlur={this.handleBlur} className="spec" autoFocus/>
-                <textarea value={thing(this.state.value)} className="result" />
-                <Copybutton copymaterial={this.state.value}/>
+                <textarea value={specs} className="result" />
+                <Copybutton copymaterial={specs}/>
             </div>
         );
     }

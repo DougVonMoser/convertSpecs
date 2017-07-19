@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
-import ClipBoard from 'clipboard';
-
+import Clipboard from 'clipboard';
 
 class Copybutton extends Component {
     constructor(props){
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        this.thingy = null;
+        this.render = this.render.bind(this);
+        this.componentDidUpdate = this.componentDidUpdate.bind(this);
     }
 
-    handleClick(){
-        new ClipBoard('.copy',{
-            text: function(trigger){
-                // console.dir(this.props)
-                return 'testing motherfucker';
-            }
-        })
+    componentDidUpdate(){
+        let stupid = document.querySelector('.stupid');
+        this.thingy = new Clipboard(stupid);
     }
 
 
     render() {
-        return (<div>
-            <button className="copy" onClick={this.handleClick}></button>
-        </div>
+        return (
+            <div>
+                <div className="stupid" data-clipboard-text="who the fuck knows"></div>
+                <button className="btn"></button>
+
+            </div>
         )
     }
 }
